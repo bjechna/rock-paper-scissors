@@ -14,6 +14,9 @@
     height: 50vh;
     background: #E21919;
     border-bottom: 5px #DE9D1F solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #player-side {
@@ -21,6 +24,25 @@
     height: 50vh;
     background: #1919E2;
     border-top: 5px #DE9D1F solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stars-container {
+    position: absolute;
+    left: 100px;
+}
+
+.star {
+    width: 100px;
+    height: 100px;
+    background: url(img/emptystar.png);
+    margin: 10px;
+}
+
+.filled {
+    background: url(img/filledstar.png);
 }
 
 .card-container {
