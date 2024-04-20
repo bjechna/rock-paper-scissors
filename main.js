@@ -1,6 +1,8 @@
 const play = document.getElementById("play");
 const enemyCard = document.querySelector(".enemy-card");
 const enemyBackCard = document.querySelector(".back")
+const endScreen = document.getElementById("endscreen");
+const info = document.getElementById("info");
 const playerCards = Array.prototype.slice.call(document.querySelector(".player-cards-container").children, 0); // Turning collection into array
 const enemyStars = Array.prototype.slice.call(document.querySelector(".enemy-stars-container").children, 0);
 const playerStars = Array.prototype.slice.call(document.querySelector(".player-stars-container").children, 0);
@@ -47,6 +49,8 @@ function showCard() {
         enemyCard.style.transform = "rotateY(0deg)";
         isActive = true;
     }, 2000)
+
+    if (enemyScore == 3 || playerScore == 3) endGame();
 }
 
 function setActive(item) {
@@ -74,4 +78,35 @@ function fillStar(side) {
     } else {
         playerStars[playerScore-1].classList.toggle('filled');
     }
+}
+
+function endGame() {
+    isActive = false;
+
+    endScreen.style.display = "flex";
+
+    if (playerScore > enemyScore) {
+        info.innerHTML = "YOU WON";
+        info.style.color = "#1919E2";
+    } else {
+        info.innerHTML = "YOU LOST";
+        info.style.color = "#E21919";
+    }
+}
+
+function restart() {
+    endScreen.style.display = "none";
+
+    playerScore = 0;
+    enemyScore = 0;
+
+    playerStars.forEach(element => {
+        if (element.classList.contains('filled')) element.classList.toggle('filled');
+    })
+
+    enemyStars.forEach(element => {
+        if (element.classList.contains('filled')) element.classList.toggle('filled');
+    })
+
+    isActive = true;
 }

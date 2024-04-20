@@ -151,7 +151,7 @@
 }
 
 #endscreen {
-    display: flex;
+    display: none;
     width: 800px;
     height: 500px;
     position: absolute;
@@ -163,20 +163,13 @@
     margin: auto;
     justify-content: center;
     z-index: 1;
+    transform: translateY(200px);
 }
 
 #endscreen h1 {
     font-size: 170px;
     text-align: center;
     margin: 20px;
-}
-
-.red {
-    color: #E21919;
-}
-
-.blue {
-    color: #1919E2;
 }
 
 #restart {
