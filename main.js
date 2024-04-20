@@ -9,21 +9,20 @@ let playerChoose;
 let enemyChoose;
 let enemyScore = 0;
 let playerScore = 0;
+let isActive = true;
 
 playerCards.forEach(child => {
     child.addEventListener("click", function() {setActive(child)});
 });
 
 play.addEventListener("click", function() {
-    if (playerChoose) {
+    if (playerChoose && isActive) {
         showCard();
     }
 });
 
 function showCard() {
     drawEnemyCard();
-
-    enemyCard.style.transform = "rotateY(180deg)";
 
     if (playerChoose == 'rock' && enemyChoose == 'scissors') {
         playerScore++;
@@ -40,6 +39,14 @@ function showCard() {
         enemyScore++;
         fillStar('e');
     }
+
+    enemyCard.style.transform = "rotateY(180deg)";
+    isActive = false;
+
+    setTimeout(function() {
+        enemyCard.style.transform = "rotateY(0deg)";
+        isActive = true;
+    }, 2000)
 }
 
 function setActive(item) {

@@ -127,7 +127,7 @@
     background: url(img/paper.png);
 }
 
-button {
+#play {
     position: absolute;
     width: 500px;
     height: 100px;
@@ -140,13 +140,61 @@ button {
     top: 45vh;
     left: 0; 
     right: 0; 
-    margin-left: auto; 
-    margin-right: auto;
+    margin: auto;
     transition: 200ms;
     cursor: pointer;
 }
 
-button:hover {
+#play:hover {
     background: #EFAE2F;
     border-color: #B18122;
+}
+
+#endscreen {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    border-radius: 30px;
+    background-color: #DE9D1F;
+    border: 5px #B18122 solid;
+    left: 0;
+    right: 0;
+    margin: auto;
+    justify-content: center;
+    z-index: 1;
+}
+
+#endscreen h1 {
+    font-size: 170px;
+    text-align: center;
+    margin: 20px;
+}
+
+.red {
+    color: #E21919;
+}
+
+.blue {
+    color: #1919E2;
+}
+
+#restart {
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    background: #11CC0B;
+    border: 5px #02A90A solid;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 80px;
+    padding-top: 15px;
+    transition: 200ms;
+    cursor: pointer;
+    bottom: 20px;
+}
+
+#restart:hover {
+    background: #22DD1C;
+    border-color: #13BA1B;
 }
