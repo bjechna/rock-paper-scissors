@@ -1,8 +1,9 @@
 const play = document.getElementById("play");
 const enemyCard = document.querySelector(".enemy-card");
-const playerCards = document.querySelector(".player-cards-container").children;
+const playerCards = Array.prototype.slice.call(document.querySelector(".player-cards-container").children, 0); // Turning collection into array
+let active;
 
-Array.prototype.slice.call(playerCards, 0 ).forEach(child => {
+playerCards.forEach(child => {
     child.addEventListener("click", function() {setActive(child)});
 });
 
@@ -13,5 +14,12 @@ function showCard() {
 }
 
 function setActive(item) {
+    document.querySelectorAll(".active").forEach(element => {
+        if (element.classList.contains("active")) {
+            element.classList.toggle("active");
+        }
+    })
+
     item.classList.toggle("active");
+    active = item;
 }
