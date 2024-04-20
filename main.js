@@ -2,6 +2,8 @@ const play = document.getElementById("play");
 const enemyCard = document.querySelector(".enemy-card");
 const enemyBackCard = document.querySelector(".back")
 const playerCards = Array.prototype.slice.call(document.querySelector(".player-cards-container").children, 0); // Turning collection into array
+const enemyStars = Array.prototype.slice.call(document.querySelector(".enemy-stars-container").children, 0);
+const playerStars = Array.prototype.slice.call(document.querySelector(".player-stars-container").children, 0);
 
 let playerChoose;
 let enemyChoose;
@@ -12,12 +14,32 @@ playerCards.forEach(child => {
     child.addEventListener("click", function() {setActive(child)});
 });
 
-play.addEventListener("click", showCard);
+play.addEventListener("click", function() {
+    if (playerChoose) {
+        showCard();
+    }
+});
 
 function showCard() {
     drawEnemyCard();
 
     enemyCard.style.transform = "rotateY(180deg)";
+
+    if (playerChoose == 'rock' && enemyChoose == 'scissors') {
+        playerScore++;
+        fillStar('p');
+    } else if (playerChoose == 'scissors' && enemyChoose == 'paper') {
+        playerScore++;
+        fillStar('p');
+    } else if (playerChoose == 'paper' && enemyChoose == 'rock') {
+        playerScore++;
+        fillStar('p');
+    } else if (playerChoose == enemyChoose) {
+        console.log("Draw");
+    } else {
+        enemyScore++;
+        fillStar('e');
+    }
 }
 
 function setActive(item) {
@@ -37,4 +59,12 @@ function drawEnemyCard() {
     enemyChoose = options[Math.floor(Math.random() * 3)];
 
     enemyBackCard.style.background = `url(img/${enemyChoose}.png)`;
+}
+
+function fillStar(side) {
+    if (side == 'e') {
+        enemyStars[enemyScore-1].classList.toggle('filled');
+    } else {
+        playerStars[playerScore-1].classList.toggle('filled');
+    }
 }
