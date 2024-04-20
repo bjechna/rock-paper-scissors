@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+   width: 100%;
+   height: 100vh;
+}
+
+#enemy-side {
+    width: 100%;
+    height: 50vh;
+    background: #E21919;
+    border-bottom: 5px #DE9D1F solid;
+}
+
+#player-side {
+    width: 100%;
+    height: 50vh;
+    background: #1919E2;
+    border-top: 5px #DE9D1F solid;
+}
